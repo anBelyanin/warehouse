@@ -1,0 +1,17 @@
+version: '3.8'
+services :
+  postgres-warehouse-db:
+    image: postgres:latest
+    container_name: database
+    build: .
+    ports: 
+     - "5432:5432"
+    environment:
+     - "POSTGRES_USER=apiuser"
+     - "POSTGRES_PASSWORD=apiuser913"
+     - "POSTGRES_HOST_AUTH_METHOD=md5"
+     - "PGDATA=/dbdata"
+    volumes:
+     - "/Volumes/ExternalSSD/projects/warehouse/db/db_files:/dbdata"
+volumes:
+ dbdata:
