@@ -1,4 +1,7 @@
-package com.warehouse.scavenger.common.pojo.api.warehouse;
+package org.scavenger.warehouse.common.pojo.api;
+
 
 public class WarehouseRequest {
+
+
 }

@@ -15,8 +15,5 @@ public class WarehouseController {
         this.warehouseService = warehouseService;
     }
 
-    @GetMapping("/admin")
-    public String getAdminPage() {
-        return "admin-page";
-    }
+
 }
