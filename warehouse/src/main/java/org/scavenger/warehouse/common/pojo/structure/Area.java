@@ -26,4 +26,12 @@ public class Area {
     public void setSections(List<Section> sections) {
         this.sections = sections;
     }
+
+    public String getAreaNumber() {
+        return areaNumber;
+    }
+
+    public void setAreaNumber(String areaNumber) {
+        this.areaNumber = areaNumber;
+    }
 }

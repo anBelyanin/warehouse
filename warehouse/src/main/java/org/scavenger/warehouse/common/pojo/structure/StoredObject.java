@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @JsonPropertyOrder({
@@ -25,7 +26,7 @@ public class StoredObject {
 
     @JsonProperty(value = "receiptDate", required = true)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date receiptDate;
+    private LocalDate receiptDate;
 
     @JsonProperty(value = "receivingEmployeeName", required = true)
     private String receivingEmployeeName;
@@ -49,11 +50,11 @@ public class StoredObject {
         this.type = type;
     }
 
-    public Date getReceiptDate() {
+    public LocalDate getReceiptDate() {
         return receiptDate;
     }
 
-    public void setReceiptDate(Date receiptDate) {
+    public void setReceiptDate(LocalDate receiptDate) {
         this.receiptDate = receiptDate;
     }
 
