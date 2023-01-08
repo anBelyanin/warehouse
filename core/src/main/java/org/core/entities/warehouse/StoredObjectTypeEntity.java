@@ -8,7 +8,7 @@ public class StoredObjectTypeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stored_objects_type_pk_seq")
-    @SequenceGenerator(sequenceName = "stored_objects_type_pk_seq", name = "stored_objects_type_pk_seq", allocationSize = 5)
+    @SequenceGenerator(sequenceName = "warehouse.stored_objects_type_pk_seq", name = "stored_objects_type_pk_seq", allocationSize = 5)
     @Column(name = "id")
     private Long id;
 

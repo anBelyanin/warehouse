@@ -10,7 +10,7 @@ public class PlaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "places_pk_seq")
-    @SequenceGenerator(sequenceName = "places_pk_seq", name = "places_pk_seq", allocationSize = 10)
+    @SequenceGenerator(sequenceName = "warehouse.places_pk_seq", name = "places_pk_seq", allocationSize = 10)
     @Column(name = "id")
     private Long id;
 
@@ -23,7 +23,7 @@ public class PlaceEntity {
     @Column(name = "notes")
     private String notes;
 
-    @OneToMany(mappedBy = "place_id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "placeId", fetch = FetchType.EAGER)
     private List<StoredObjectEntity> storedObjects;
 
     public Long getId() {

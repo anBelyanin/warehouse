@@ -10,7 +10,7 @@ public class AreaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "areas_pk_seq")
-    @SequenceGenerator(sequenceName = "areas_pk_seq", name = "areas_pk_seq", allocationSize = 10)
+    @SequenceGenerator(sequenceName = "warehouse.areas_pk_seq", name = "areas_pk_seq", allocationSize = 10)
     @Column(name = "id")
     private Long id;
 
@@ -20,7 +20,7 @@ public class AreaEntity {
     @Column(name = "notes")
     private String notes;
 
-    @OneToMany(mappedBy = "area_id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "areaId", fetch = FetchType.EAGER)
     private List<SectionEntity> sectionEntities;
 
     public Long getId() {

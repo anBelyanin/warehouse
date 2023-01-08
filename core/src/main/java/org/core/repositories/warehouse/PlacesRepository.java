@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlacesRepository extends JpaRepository<PlaceEntity, Long> {
+
+    PlaceEntity findByName(String name);
 }

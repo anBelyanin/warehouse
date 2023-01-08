@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StoredObjectsTypesRepository extends JpaRepository<StoredObjectTypeEntity, Long> {
+
+    StoredObjectTypeEntity findByTypeName(String name);
 }

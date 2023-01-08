@@ -1,4 +1,4 @@
-package com.warehouse.scavenger.common;
+package org.scavenger.warehouse.common;
 
 public class Constants {
 

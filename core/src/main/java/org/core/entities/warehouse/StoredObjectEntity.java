@@ -10,7 +10,7 @@ public class StoredObjectEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stored_objects_pk_seq")
-    @SequenceGenerator(name = "stored_objects_pk_seq", sequenceName = "stored_objects_pk_seq", allocationSize = 10)
+    @SequenceGenerator(name = "stored_objects_pk_seq", sequenceName = "warehouse.stored_objects_pk_seq", allocationSize = 10)
     private Long id;
 
     @Column(name = "place_id")
@@ -19,8 +19,8 @@ public class StoredObjectEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @Column(name = "type_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
     private StoredObjectTypeEntity storedObjectType;
 
     @Column(name = "receipt_date")

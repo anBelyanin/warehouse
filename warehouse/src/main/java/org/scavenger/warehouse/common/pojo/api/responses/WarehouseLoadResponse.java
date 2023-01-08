@@ -1,4 +1,4 @@
-package org.scavenger.warehouse.common.pojo.api;
+package org.scavenger.warehouse.common.pojo.api.responses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +11,7 @@ import java.util.List;
         "areas"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WarehouseResponse {
+public class WarehouseLoadResponse {
 
     @JsonProperty(value = "areas")
     private List<Area> areas;

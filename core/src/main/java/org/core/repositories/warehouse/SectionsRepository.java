@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SectionsRepository extends JpaRepository<SectionEntity, Long> {
+
+    SectionEntity findByName(String name);
 }
