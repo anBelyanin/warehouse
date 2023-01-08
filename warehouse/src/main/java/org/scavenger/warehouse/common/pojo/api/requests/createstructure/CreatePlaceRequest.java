@@ -1,5 +1,6 @@
 package org.scavenger.warehouse.common.pojo.api.requests.createstructure;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "name",
         "notes"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CreatePlaceRequest {
 
     @JsonProperty(value = "areaName", required = true)

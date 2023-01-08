@@ -1,14 +1,15 @@
 package org.scavenger.warehouse.controllers;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.scavenger.warehouse.common.pojo.api.requests.WarehouseLoadRequest;
+import org.scavenger.warehouse.common.pojo.api.responses.StoredObjectsTypesResponse;
 import org.scavenger.warehouse.common.pojo.api.responses.WarehouseLoadResponse;
 import org.scavenger.warehouse.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/warehouse")
 public class WarehouseController {
 
     private final WarehouseService warehouseService;
@@ -18,9 +19,13 @@ public class WarehouseController {
         this.warehouseService = warehouseService;
     }
 
-    @PostMapping(path = "/warehouse", consumes = "application/json", produces = "application/json")
-    public WarehouseLoadResponse loadWarehouse(WarehouseLoadRequest warehouseLoadRequest) {
-        warehouseService.validateRequest(warehouseLoadRequest);
-        return warehouseService.loadWarehouse(warehouseLoadRequest);
+    @GetMapping(path = "/", produces = "application/json")
+    public WarehouseLoadResponse getWarehouse() {
+        return warehouseService.getWarehouse();
+    }
+
+    @GetMapping(path = "/types", produces = "application/json")
+    public StoredObjectsTypesResponse getStoredObjectsTypes() {
+        return warehouseService.getStoredObjectsTypes();
     }
 }

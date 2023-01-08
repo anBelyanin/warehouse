@@ -1,9 +1,7 @@
 package org.scavenger.warehouse.controllers;
 
-import org.scavenger.warehouse.common.pojo.api.requests.createstructure.CreateAreaRequest;
-import org.scavenger.warehouse.common.pojo.api.requests.createstructure.CreateSectionRequest;
-import org.scavenger.warehouse.common.pojo.api.responses.createstructure.CreateAreaResponse;
-import org.scavenger.warehouse.common.pojo.api.responses.createstructure.CreateSectionResponse;
+import org.scavenger.warehouse.common.pojo.api.requests.createstructure.*;
+import org.scavenger.warehouse.common.pojo.api.responses.createstructure.*;
 import org.scavenger.warehouse.service.CreateStructureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,4 +29,20 @@ public class WarehouseCreateController {
     public CreateSectionResponse createSection(@RequestBody CreateSectionRequest request) {
         return createStructureService.createSectionByRequest(request);
     }
+
+    @PostMapping(path = "/place", consumes = "application/json", produces = "application/json")
+    public CreatePlaceResponse createPlace(@RequestBody CreatePlaceRequest request) {
+        return createStructureService.createPlaceByRequest(request);
+    }
+
+    @PostMapping(path = "/stored-object-type", consumes = "application/json", produces = "application/json")
+    public CreateStoredObjectTypeResponse createStoredObjectType(@RequestBody CreateStoredObjectTypeRequest request) {
+        return createStructureService.createStoredObjectTypeByRequest(request);
+    }
+
+    @PostMapping(path = "/stored-object", consumes = "application/json", produces = "application/json")
+    public CreateStoredObjectResponse createStoredObject(@RequestBody CreateStoredObjectRequest request) {
+        return createStructureService.createStoredObjectByRequest(request);
+    }
+
 }

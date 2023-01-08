@@ -11,6 +11,7 @@ public class StoredObjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stored_objects_pk_seq")
     @SequenceGenerator(name = "stored_objects_pk_seq", sequenceName = "warehouse.stored_objects_pk_seq", allocationSize = 10)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "place_id")

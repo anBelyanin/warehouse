@@ -3,7 +3,7 @@ package org.core.entities.warehouse;
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema = "warehouse", name = "stored_objects_type")
+@Table(schema = "warehouse", name = "stored_objects_types")
 public class StoredObjectTypeEntity {
 
     @Id

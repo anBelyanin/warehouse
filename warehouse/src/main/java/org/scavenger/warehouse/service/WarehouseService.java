@@ -3,13 +3,14 @@ package org.scavenger.warehouse.service;
 import org.core.entities.warehouse.AreaEntity;
 import org.core.entities.warehouse.PlaceEntity;
 import org.core.entities.warehouse.StoredObjectEntity;
+import org.core.entities.warehouse.StoredObjectTypeEntity;
 import org.core.repositories.warehouse.AreasRepository;
+import org.core.repositories.warehouse.StoredObjectsTypesRepository;
+import org.scavenger.warehouse.common.Constants;
 import org.scavenger.warehouse.common.pojo.api.requests.WarehouseLoadRequest;
+import org.scavenger.warehouse.common.pojo.api.responses.StoredObjectsTypesResponse;
 import org.scavenger.warehouse.common.pojo.api.responses.WarehouseLoadResponse;
-import org.scavenger.warehouse.common.pojo.structure.Area;
-import org.scavenger.warehouse.common.pojo.structure.Place;
-import org.scavenger.warehouse.common.pojo.structure.Section;
-import org.scavenger.warehouse.common.pojo.structure.StoredObject;
+import org.scavenger.warehouse.common.pojo.structure.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,21 +22,32 @@ import java.util.stream.Collectors;
 public class WarehouseService {
 
     private final AreasRepository areasRepository;
+    private final StoredObjectsTypesRepository storedObjectsTypesRepository;
 
     @Autowired
-    public WarehouseService(AreasRepository areasRepository) {
+    public WarehouseService(AreasRepository areasRepository,
+                            StoredObjectsTypesRepository storedObjectsTypesRepository) {
         this.areasRepository = areasRepository;
+        this.storedObjectsTypesRepository = storedObjectsTypesRepository;
     }
 
     //Put validation here
     public void validateRequest(WarehouseLoadRequest warehouseRequest) {
     }
 
-    public WarehouseLoadResponse loadWarehouse(WarehouseLoadRequest warehouseRequest) {
+    public WarehouseLoadResponse getWarehouse() {
         List<AreaEntity> areas = areasRepository.findAll();
         WarehouseLoadResponse warehouseResponse = new WarehouseLoadResponse();
         warehouseResponse.setAreas(this.getAreasByAreasEntities(areas));
         return warehouseResponse;
+    }
+
+    public StoredObjectsTypesResponse getStoredObjectsTypes() {
+        StoredObjectsTypesResponse response = new StoredObjectsTypesResponse();
+        List<StoredObjectTypeEntity> storedObjectTypeEntities = storedObjectsTypesRepository.findAll();
+        response.setStoredObjectsTypes(this.getStoredObjectTypesByEntities(storedObjectTypeEntities));
+        response.setMessage(Constants.AUTH_SUCCESS_RESULT);
+        return response;
     }
 
     private List<Area> getAreasByAreasEntities(List<AreaEntity> areaEntities) {
@@ -79,4 +91,15 @@ public class WarehouseService {
                     return storedObject;
                 }).collect(Collectors.toList());
     }
+
+    private List<StoredObjectType> getStoredObjectTypesByEntities(List<StoredObjectTypeEntity> entities) {
+        return entities.stream()
+                .map(e -> {
+                    StoredObjectType storedObjectType = new StoredObjectType();
+                    storedObjectType.setTypeName(e.getTypeName());
+                    storedObjectType.setNotes(e.getNotes());
+                    return storedObjectType;
+                }).collect(Collectors.toList());
+    }
+
 }
