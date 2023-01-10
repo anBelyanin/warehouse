@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.core.repositories.auth.CoreRolesRepository;
 
-@Configuration
+@Configuration("warehouseSecurityConfiguration")
 public class SecurityFilterConfiguration {
 
     private final CustomUserDetailsService customUserDetailsService;

@@ -1,4 +1,4 @@
-package org.scavenger.warehouse.controllers;
+package org.scavenger.warehouse.controller;
 
 import org.scavenger.warehouse.common.pojo.api.responses.StoredObjectsTypesResponse;
 import org.scavenger.warehouse.common.pojo.api.responses.WarehouseLoadResponse;

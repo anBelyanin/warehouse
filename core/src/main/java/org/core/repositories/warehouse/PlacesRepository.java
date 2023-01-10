@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface PlacesRepository extends JpaRepository<PlaceEntity, Long> {
 
     PlaceEntity findByName(String name);
+
+    PlaceEntity findByNameAndSectionId(String name, Long sectionId);
 }

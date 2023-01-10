@@ -1,4 +1,4 @@
-package org.scavenger.warehouse.controllers;
+package org.scavenger.warehouse.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

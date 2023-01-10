@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Service
+@Service("warehouseService")
 public class WarehouseService {
 
     private final AreasRepository areasRepository;
