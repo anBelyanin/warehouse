@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/warehouse")
-public class WarehouseController {
+public class WarehouseRestController {
 
     private final WarehouseService warehouseService;
 
     @Autowired
-    public WarehouseController(WarehouseService warehouseService) {
+    public WarehouseRestController(WarehouseService warehouseService) {
         this.warehouseService = warehouseService;
     }
 

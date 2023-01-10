@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -39,11 +40,11 @@ public class AuthController {
     }
 
     @GetMapping(path = {"/", "/auth-process"})
-    public String getAuthentication() {
+    public String getAuthentication(@RequestParam String redirectUrl) {
         if (authService.isAuthenticated()) {
-            return "redirect:" + securingAppConfiguration.getMainRedirectUrl();
+            return "redirect:" + redirectUrl;
         }
-        return "login-form";
+        else return "login-form";
     }
 
     @GetMapping(path = {"/logout"})
