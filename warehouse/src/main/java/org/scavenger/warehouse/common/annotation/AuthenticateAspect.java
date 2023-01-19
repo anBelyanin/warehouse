@@ -4,11 +4,18 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.core.exceptions.BusinessException;
+import org.core.pojo.api.AuthRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.server.Session;
+import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.Thymeleaf;
+import org.thymeleaf.engine.TemplateData;
+
+import java.util.Map;
 
 
 @Aspect
@@ -29,7 +36,7 @@ public class AuthenticateAspect {
         if (authenticatorUrl == null) {
             throw new BusinessException("Authenticator url not configured");
         }
-        //TODO create auth checking from rest client, this is temp solution
-        return "redirect:" + authenticatorUrl;
+        AuthRequest authRequest = new AuthRequest();
+        return null;
     }
 }

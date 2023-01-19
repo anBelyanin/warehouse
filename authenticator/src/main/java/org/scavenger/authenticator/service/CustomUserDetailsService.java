@@ -7,18 +7,17 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.core.repositories.auth.UsersRepository;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UsersRepository usersRepository;
 
-    @Autowired
     public CustomUserDetailsService(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
@@ -26,8 +25,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         org.core.entities.auth.User userEntity = usersRepository.findUserByUsername(username);
-        Set<CustomAuthority> userAuthorities = mapCustomAuthoritiesByUserEntity(userEntity);
         if (userEntity != null) {
+            Set<CustomAuthority> userAuthorities = mapCustomAuthoritiesByUserEntity(userEntity);
             UserDetails userDetails = User.builder()
                     .username(userEntity.getUsername())
                     .password(userEntity.getPassword())

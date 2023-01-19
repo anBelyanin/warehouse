@@ -1,4 +1,4 @@
-package org.scavenger.authenticator.common.pojo.api;
+package org.core.pojo.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         "status",
         "message",
-        "token"
+        "session"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthResponse {
@@ -18,8 +18,8 @@ public class AuthResponse {
     @JsonProperty(value = "message")
     private String message;
 
-    @JsonProperty(value = "token")
-    private String token;
+    @JsonProperty(value = "session")
+    private String session;
 
     public String getStatus() {
         return status;
@@ -37,11 +37,11 @@ public class AuthResponse {
         this.message = message;
     }
 
-    public String getToken() {
-        return token;
+    public String getSession() {
+        return session;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setSession(String session) {
+        this.session = session;
     }
 }
